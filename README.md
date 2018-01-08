@@ -5,6 +5,8 @@ Train_O_Matic
 System rezerwacji biletów kolejowych
 ------------------------------------
 
+ZAŁÓŻCIE KAŻDY SWOJEGO BRANChA A POTEM RÓBCIE MERGA. 
+
 Projekt z PO. Wykonałem szkielet aplikacji wraz z GUI, bazą danych oraz część funkcjonalości związanej z logiką biznesową. Pokazywałem diagramy klas dr. Myszorowi. Powiedział, że należy rozbić klasę Pasażer na mniejsze, wyspecjalizowane klasy. Zacząłem od klasy Ticket odpowiedzialnego za obsługę biletów wraz z wydrukiem i zapisem do bazy danych. W większości działa. Pozostało w niej do zrobienia:
 1. Zapis do bazy wraz z usunięciem biletu z pamięci. 
 2. wydruk z QStringa (QPrinterDialog i QPrinter) - 3-4 linie kodu. 
@@ -27,5 +29,14 @@ zostało Was 4 i jest akturat tyle roboty:
 4)sekcja TICKET (dokończyć) + API bazy danych dla księgowości. 
 
 I appka gotowa. Mi to coś zajęło dwa popołudnia, choć wcześniej zmarnowałem 3 przez cholernego .NETa który (jak się okazało) nie posiada odpowiedniego wsparcia dla C++. 
+
+
+[Qt Creator 4.5.0]
+[Based on Qt 5.10.0 (MSVC 2015, 32 bit)]
+
+[SQlite3]
+do obsługi polecam SQLiteStudio
+<https://sqlitestudio.pl/index.rvt>
+
 
 Powodzenia
