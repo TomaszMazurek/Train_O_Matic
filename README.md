@@ -20,7 +20,7 @@ strone HOME na której proponuje umieścić informację o trzech najbliższych p
 
 Stronę ROUTE gdzie można zaplanować trasę z konkretnymi stacjami tranzytowymi przez które użytkownik będzie chciał jechać. Powinno się umożliwic użytkownikowi zestawianie stacji ręcznie pamiętając o odpowiednim interfejsie, ponieważ: 
 
-		APLIKACJA BĘDZIE WSPOŁPRACOWAŁA Z PANELEM DOTYKOWYM
+		### APLIKACJA BĘDZIE WSPOŁPRACOWAŁA Z PANELEM DOTYKOWYM ###
 
 zostało Was 4 i jest akturat tyle roboty:
 1)sekcja HOME, 
