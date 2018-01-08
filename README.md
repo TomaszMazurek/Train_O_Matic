@@ -23,10 +23,10 @@ Stronę ROUTE gdzie można zaplanować trasę z konkretnymi stacjami tranzytowym
 		### APLIKACJA BĘDZIE WSPOŁPRACOWAŁA Z PANELEM DOTYKOWYM ###
 
 zostało Was 4 i jest akturat tyle roboty:
-1)sekcja HOME, 
-2)sekcja SCHEDULE, 
-3)sekcja ROUTE,
-4)sekcja TICKET (dokończyć) + API bazy danych dla księgowości. 
+1. sekcja HOME, 
+2. sekcja SCHEDULE, 
+3. sekcja ROUTE,
+4. sekcja TICKET (dokończyć) + API bazy danych dla księgowości. 
 
 I appka gotowa. Mi to coś zajęło dwa popołudnia, choć wcześniej zmarnowałem 3 przez cholernego .NETa który (jak się okazało) nie posiada odpowiedniego wsparcia dla C++. 
 
