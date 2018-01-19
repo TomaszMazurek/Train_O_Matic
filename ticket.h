@@ -7,13 +7,14 @@ struct TicketType{
     QString trainNum;
     QString destination;
     QString origin;
-    QChar platform;
+    QString platform;
     QString track;
     QString arrival;
     QString departure;
     QString ticketType;
     QString classType;
     QString seatType;
+    QString cost;
     int ticketNum;
 };
 
@@ -22,7 +23,7 @@ class Ticket
 public:
     Ticket();
     static TicketType* createTicket();
-private:
+
     static int ticketsCount;
 
 };

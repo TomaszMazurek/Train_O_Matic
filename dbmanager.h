@@ -4,6 +4,9 @@
 #include <QtSql>
 #include <QMessageBox>
 #include <QChar>
+#include "ticket.h"
+#include <QSqlDatabase>
+
 
 struct Connection
 {
@@ -14,8 +17,9 @@ struct Connection
     QString track;
     QString arrival;
     QString departure;
-
+    QString cost;
 };
+
 
 class DbManager
 {
@@ -23,6 +27,7 @@ public:
     DbManager();
     ~DbManager();
     QList<Connection> getCurrentConnections();
+    void saveTicket(TicketType* ticket);
 
 private:
     QSqlDatabase db;

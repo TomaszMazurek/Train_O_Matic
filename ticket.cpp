@@ -19,9 +19,11 @@ TicketType* Ticket::createTicket()
     ticket->ticketType = "";
     ticket->classType = "";
     ticket->seatType = "";
+    ticket->cost="";
     ticket->ticketNum = ticketsCount;
 
     return ticket;
 }
+
 
 int Ticket::ticketsCount = 0;

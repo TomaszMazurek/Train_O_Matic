@@ -1,3 +1,4 @@
+
 #include "dashboard.h"
 #include "ui_dashboard.h"
 #include "dbmanager.h"
@@ -8,6 +9,7 @@ Dashboard::Dashboard(QWidget *parent) :
     QMainWindow(parent, Qt::FramelessWindowHint), ui(new Ui::Dashboard)
 {
     ui->setupUi(this);
+
     dbManager = new DbManager();
     ui->tableView->setModel(setTableModel());
     ui->tableView->sortByColumn(4, Qt::AscendingOrder);
@@ -37,6 +39,10 @@ void Dashboard::on_btnHome_clicked()
 void Dashboard::on_btnSchedule_clicked()
 {
     ui->stackedWidget->setCurrentIndex(1);
+    dbManager->getCurrentConnections();
+    QSqlTableModel* mode=setTableModel();
+    ui->tableView->setModel(mode);
+
 }
 void Dashboard::on_btnRoute_clicked()
 {
@@ -46,37 +52,44 @@ void Dashboard::on_btnTicket_clicked()
 {
     ui->stackedWidget->setCurrentIndex(3);
     ticket = Ticket::createTicket();
+    ticket->cost="11.0";
+
     ui->textBrowser->setText(setTicketText(ticket));
+
 }
 QSqlTableModel* Dashboard::setTableModel()
 {
     QSqlTableModel *model = new QSqlTableModel(this);
     model->setTable("Connections");
     model->select();
-    model->setHeaderData(0, Qt::Horizontal, QObject::tr("ODJAZD"));
-    model->setHeaderData(1, Qt::Horizontal, QObject::tr("PRZYJAZD"));
+    model->setHeaderData(0, Qt::Horizontal, QObject::tr("Z"));
+    model->setHeaderData(1, Qt::Horizontal, QObject::tr("DO"));
     model->setHeaderData(2, Qt::Horizontal, QObject::tr("PERON"));
     model->setHeaderData(3, Qt::Horizontal, QObject::tr("TOR"));
-    model->setHeaderData(4, Qt::Horizontal, QObject::tr("CZAS"));
-
+    model->setHeaderData(4, Qt::Horizontal, QObject::tr("ODJAZD"));
+    model->setHeaderData(5, Qt::Horizontal, QObject::tr("PRZYJAZD"));
+    model->setHeaderData(6, Qt::Horizontal, QObject::tr("CENA BILETU"));
     model->removeColumn(0);
 
     return model;
 }
 QString Dashboard::setTicketText(TicketType *ticket)
 {
+    cost=ticket->cost.toDouble()*clasCost*typCost;
     QString ticketText = QString("OTrain\t\t\t\t\t       bilet: %1\n"
                      "sp. z o.o.\t\t\t\t\t      Klasa: %2\n"
                      "\n"
-                     "%5 | 8:30 |      Warszawa -> Kraków      | 20.12.2018 | 11:00\n"
+                     "%5 | %7 |      %8 -> %9      | %5 | %10\n"
                      "\n"
-                     "\t\tPeron: A\t\t Tor: 2"
-                     "\n\n"
-                     "Pociąg nr.\tWagon:\tPrzedział:\tMiejsce: \n"
-                     "     1\t\t4\t5\t\t%3\n"
+                     "\t\tPeron: %11"
+                                 "1\t\t Tor: %12\n"
                      "\n"
-                     "Numer biletu:\t\t%4").arg(ticket->ticketType).arg(ticket->classType).arg(ticket->seatType).
-            arg(ticket->ticketNum).arg(QDate::currentDate().toString("dd-MM-yy"));
+                     "Pociąg nr. \tWagon:\tPrzedział:\tMiejsce: \n"
+                     "     %13\t\t4\t5\t\t%3\n"
+                     "\n"
+                     "Numer biletu:\t\t%4       Cena:\t\t%6").arg(ticket->ticketType).arg(ticket->classType).arg(ticket->seatType).
+            arg(ticket->ticketNum).arg(QDate::currentDate().toString("dd-MM-yy")).arg(cost).arg(ticket->departure).arg(ticket->origin)
+            .arg(ticket->destination).arg(ticket->arrival).arg(ticket->platform).arg(ticket->track).arg(ticket->trainNum);
 
     return ticketText;
 }
@@ -98,23 +111,31 @@ void Dashboard::mousePressEvent(QMouseEvent *event)
 
 void Dashboard::on_btnFirstClass_clicked()
 {
+    clasCost=2.1;
     ticket->classType = "I";
     ui->textBrowser->setText(setTicketText(ticket));
+
 }
 void Dashboard::on_btnSecondClass_clicked()
 {
+    clasCost=1;
     ticket->classType = "II";
     ui->textBrowser->setText(setTicketText(ticket));
+
 }
 void Dashboard::on_btnNormal_clicked()
 {
+    typCost=1;
     ticket->ticketType = "Normalny";
     ui->textBrowser->setText(setTicketText(ticket));
+
 }
 void Dashboard::on_btnReduced_clicked()
 {
+    typCost=0.51;
     ticket->ticketType = "Ulgowy";
     ui->textBrowser->setText(setTicketText(ticket));
+
 }
 void Dashboard::on_btnEconClass_clicked()
 {
@@ -170,4 +191,18 @@ void Dashboard::on_btnClear_clicked()
     ticket->classType = "";
     ticket->ticketType = "";
     ui->textBrowser->setText(setTicketText(ticket));
+}
+
+void Dashboard::on_btnBuy_clicked()
+{
+    ticket->cost=QString::number(cost);
+  dbManager->saveTicket(ticket);
+
+   on_btnClear_clicked();
+   on_btnHome_clicked();
+}
+
+void Dashboard::on_tableView_activated(const QModelIndex &index)
+{
+
 }

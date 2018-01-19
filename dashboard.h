@@ -46,13 +46,19 @@ private slots:
 
     void on_btnClear_clicked();
 
+    void on_btnBuy_clicked();
+
+    void on_tableView_activated(const QModelIndex &index);
+
 private:
     Ui::Dashboard *ui;
     DbManager *dbManager;
     QList<Connection> connections;
     QPoint *m_ScrollStart;
     TicketType *ticket;
-
+    double cost=0;
+    double clasCost=1;
+    double typCost=1;
     QSqlTableModel* setTableModel();
     QString setTicketText(TicketType *ticket);
 
