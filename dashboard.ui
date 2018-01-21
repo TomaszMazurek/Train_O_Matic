@@ -1225,9 +1225,6 @@
     <property name="cursor" stdset="0">
      <cursorShape>BlankCursor</cursorShape>
     </property>
-    <property name="tabletTracking">
-     <bool>false</bool>
-    </property>
     <property name="focusPolicy">
      <enum>Qt::NoFocus</enum>
     </property>
@@ -1288,6 +1285,9 @@
     <property name="cornerButtonEnabled">
      <bool>false</bool>
     </property>
+    <property name="tabletTracking" stdset="0">
+     <bool>false</bool>
+    </property>
     <attribute name="horizontalHeaderCascadingSectionResizes">
      <bool>true</bool>
     </attribute>
@@ -1326,7 +1326,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>3</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="pageHome">
      <widget class="QWidget" name="wgtHome" native="true">
@@ -1399,9 +1399,6 @@
       <property name="mouseTracking">
        <bool>true</bool>
       </property>
-      <property name="tabletTracking">
-       <bool>true</bool>
-      </property>
       <property name="focusPolicy">
        <enum>Qt::NoFocus</enum>
       </property>
@@ -1459,6 +1456,42 @@
       <property name="verticalScrollMode">
        <enum>QAbstractItemView::ScrollPerPixel</enum>
       </property>
+      <property name="gridStyle">
+       <enum>Qt::DashLine</enum>
+      </property>
+      <property name="cornerButtonEnabled">
+       <bool>false</bool>
+      </property>
+      <property name="tabletTracking" stdset="0">
+       <bool>false</bool>
+      </property>
+      <attribute name="horizontalHeaderCascadingSectionResizes">
+       <bool>true</bool>
+      </attribute>
+      <attribute name="horizontalHeaderDefaultSectionSize">
+       <number>200</number>
+      </attribute>
+      <attribute name="horizontalHeaderMinimumSectionSize">
+       <number>140</number>
+      </attribute>
+      <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
+       <bool>true</bool>
+      </attribute>
+      <attribute name="horizontalHeaderStretchLastSection">
+       <bool>true</bool>
+      </attribute>
+      <attribute name="verticalHeaderCascadingSectionResizes">
+       <bool>true</bool>
+      </attribute>
+      <attribute name="verticalHeaderDefaultSectionSize">
+       <number>50</number>
+      </attribute>
+      <attribute name="verticalHeaderMinimumSectionSize">
+       <number>50</number>
+      </attribute>
+      <attribute name="verticalHeaderStretchLastSection">
+       <bool>false</bool>
+      </attribute>
      </widget>
     </widget>
     <widget class="QWidget" name="pageRoute">

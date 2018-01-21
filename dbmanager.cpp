@@ -8,7 +8,7 @@
 
 DbManager::DbManager()
 {
-   const QString path = ("polaczenie.db");
+   const QString path = ("E:/polsl/PO/projekt/Train_O_Matic/polaczenie.db");
 
     db = QSqlDatabase::addDatabase("QSQLITE");
     db.setDatabaseName(path);

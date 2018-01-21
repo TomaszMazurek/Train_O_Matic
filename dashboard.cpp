@@ -68,8 +68,9 @@ QSqlTableModel* Dashboard::setTableModel()
     model->setHeaderData(3, Qt::Horizontal, QObject::tr("TOR"));
     model->setHeaderData(4, Qt::Horizontal, QObject::tr("ODJAZD"));
     model->setHeaderData(5, Qt::Horizontal, QObject::tr("PRZYJAZD"));
-    model->setHeaderData(6, Qt::Horizontal, QObject::tr("CENA BILETU"));
+    //model->setHeaderData(6, Qt::Horizontal, QObject::tr("CENA BILETU"));
     model->removeColumn(0);
+    model->removeColumn(6);
 
     return model;
 }

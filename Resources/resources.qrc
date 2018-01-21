@@ -6,5 +6,6 @@
         <file>routeplanner_white.png</file>
         <file>tickets_white.png</file>
         <file>return_white.png</file>
+        <file>polaczenie.db</file>
     </qresource>
 </RCC>
